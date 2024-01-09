@@ -1,0 +1,48 @@
+https://github.com/gnutirt/geth_Tool.git
+
+git@github.com:gnutirt/geth_Tool.git
+
+sudo add-apt-repository -y ppa:ethereum/ethereum
+sudo apt-get update
+sudo apt-get install ethereum
+
+ssh root@64.23.150.193 server geth
+rm -rf geth_Tool
+
+mkdir wonchaindata
+
+
+rm -rf wonchaindata
+
+sudo cp /geth_Tool/geth.build /wonchaindata/
+wget https://github.com/gnutirt/geth_Tool/blob/main/geth.build/geth
+wget https://raw.githubusercontent.com/wondollars/wonchain/main/genesis.json
+wget https://github.com/wondollars/wonchain/blob/main/won.service
+
+
+./wonchaindata/geth init --datadir wonchaindata genesis.json
+/wonchaindata/geth --version
+
+/wonchaindata/geth --datadir ./wonchaindata init ./genesis.json
+
+sudo systemctl stop won.service
+sudo nano /etc/systemd/system/won.service
+systemctl daemon-reload
+sudo systemctl start won.service
+sudo systemctl enable won.service
+sudo systemctl restart won
+sudo systemctl status won.service
+/usr/bin
+
+sudo cp /geth_Tool/geth.build /wonchaindata/
+
+sudo chmod +x /usr/bin/geth
+sudo chmod +x /usr/local/bin/geth
+sudo chmod +x wonchaindata/geth
+
+sudo cp ./build/bin/geth /usr/bin/geth
+sudo cp  geth /usr/bin/geth
+sudo cp  geth /usr/local/bin/geth
+
+journalctl -u won.service -e
+
