@@ -9,7 +9,7 @@ sudo apt-get install ethereum
 ssh root@64.23.150.193 server geth
 rm -rf geth_Tool
 
-mkdir wonchaindata
+mkdir wonchainPoS
 
 
 rm -rf wonchaindata
