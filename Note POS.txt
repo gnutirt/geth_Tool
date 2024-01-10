@@ -9,21 +9,21 @@ sudo apt-get install ethereum
 ssh root@64.23.150.193 server geth
 rm -rf geth_Tool
 
-mkdir wonchainPoS
+mkdir wonchain1
 
 
-rm -rf wonchaindata
+rm -rf wonchainPoS
+ 
+ 
+wget https://raw.githubusercontent.com/wondollars/wonchain/main/genesis_pos.json
+ 
+geth --syncmode full --http  --networkid 696969    --http.port 8545 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0" --nat extip:64.23.150.193 --datadir /wonchain
+geth --syncmode full --http  --networkid 696969    --http.port 8545 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0" --nat extip:64.23.150.193 --datadir /wonchain1 --authrpc.addr localhost --authrpc.port 8545 --authrpc.vhosts localhost --authrpc.jwtsecret /tmp/jwtsecret    
 
-sudo cp /geth_Tool/geth.build /wonchaindata/
-wget https://github.com/gnutirt/geth_Tool/blob/main/geth.build/geth
-wget https://raw.githubusercontent.com/wondollars/wonchain/main/genesis.json
-wget https://github.com/wondollars/wonchain/blob/main/won.service
+ 
 
-
-./wonchaindata/geth init --datadir wonchaindata genesis.json
-/wonchaindata/geth --version
-
-/wonchaindata/geth --datadir ./wonchaindata init ./genesis.json
+ geth --datadir ./wonchainPoS init ./genesis_pos.json
+  geth --datadir /wonchain1 init  genesis_pos.json
 
 sudo systemctl stop won.service
 sudo nano /etc/systemd/system/won.service
@@ -32,17 +32,8 @@ sudo systemctl start won.service
 sudo systemctl enable won.service
 sudo systemctl restart won
 sudo systemctl status won.service
-/usr/bin
+ 
 
-sudo cp /geth_Tool/geth.build /wonchaindata/
-
-sudo chmod +x /usr/bin/geth
-sudo chmod +x /usr/local/bin/geth
-sudo chmod +x wonchaindata/geth
-
-sudo cp ./build/bin/geth /usr/bin/geth
-sudo cp  geth /usr/bin/geth
-sudo cp  geth /usr/local/bin/geth
-
+ 
 journalctl -u won.service -e
 
