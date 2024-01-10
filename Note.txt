@@ -25,13 +25,14 @@ wget https://github.com/wondollars/wonchain/blob/main/won.service
 ./geth init --datadir /wonchaindata genesis.json
 
 /wonchaindata/geth --datadir ./wonchaindata init ./genesis.json
-/wonchaindata/geth --syncmode full --http  --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77 --networkid 6868    --http.port 8545 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0" --nat extip:64.23.150.193 --datadir ./wonchainpow --mine --allow-insecure-unlock --unlock 0xACCD4fb6730394a8addce2572432E513E9D3a2f3 --password  ./password.txt
+/wonchaindata/geth --syncmode full --http  --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77 --networkid 6868    --http.port 8545 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0" --nat extip:64.23.150.193 --datadir ./wonchainpow --mine --allow-insecure-unlock --unlock 0x9945Af1760d4F1887ACe84887c2A6B89C087B8b7 --password  ./password.txt
 
+geth --syncmode full --http  --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77 --networkid 686868    --http.port 8545 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0" --nat extip:143.198.102.57 --datadir /wonchaindata --mine --allow-insecure-unlock
 
 sudo systemctl stop won.service
 sudo nano /etc/systemd/system/won.service
 systemctl daemon-reload
-sudo systemctl start won.service
+  sudo systemctl start won.service
 sudo systemctl enable won.service
 sudo systemctl restart won
 sudo systemctl status won.service
@@ -45,11 +46,19 @@ sudo chmod +x wonchaindata/geth
 
 sudo cp ./build/bin/geth /usr/bin/geth
 sudo cp  geth /usr/bin/geth
+------------------------------------------------------------------
 
+Your new key was generated
 
-Public address of the key:   0xACCD4fb6730394a8addce2572432E513E9D3a2f3
-Path of the secret key file: /root/.ethereum/keystore/UTC--2024-01-10T04-25-52.006879736Z--accd4fb6730394a8addce2572432e513e9d3a2f3
-sudo cp  geth /usr/local/bin/geth
+Public address of the key:   0xF9De32E9939e881aceccEf50FfB9dc52Db72019E
+Path of the secret key file: /root/.ethereum/keystore/UTC--2024-01-10T08-06-31.757624809Z--f9de32e9939e881aceccef50ffb9dc52db72019e
+
+- You can share your public address with anyone. Others need it to interact with you.
+- You must NEVER share the secret key with anyone! The key controls access to your funds!
+- You must BACKUP your key file! Without the key, it's impossible to access account funds!
+- You must REMEMBER your password! Without the password, it's impossible to decrypt the key!
+
+------------------------------------------------------------------
 
 journalctl -u won.service -e
 
