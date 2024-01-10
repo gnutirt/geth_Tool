@@ -23,6 +23,8 @@ wget https://github.com/wondollars/wonchain/blob/main/won.service
 ./wonchaindata/geth init --datadir wonchaindata genesis.json
 /wonchaindata/geth --version
 ./geth init --datadir /wonchaindata genesis.json
+geth init --datadir ./wonchaindata genesis.json
+
 
 /wonchaindata/geth --datadir ./wonchaindata init ./genesis.json
 /wonchaindata/geth --syncmode full --http  --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77 --networkid 6868    --http.port 8545 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0" --nat extip:64.23.150.193 --datadir ./wonchainpow --mine --allow-insecure-unlock --unlock 0x9945Af1760d4F1887ACe84887c2A6B89C087B8b7 --password  ./password.txt
@@ -32,10 +34,11 @@ geth --syncmode full --http  --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e90
 sudo systemctl stop won.service
 sudo nano /etc/systemd/system/won.service
 systemctl daemon-reload
-  sudo systemctl start won.service
+sudo systemctl start won.service
 sudo systemctl enable won.service
 sudo systemctl restart won
 sudo systemctl status won.service
+journalctl -u won.service -f
 /usr/bin
 
 sudo cp /geth_Tool/geth.build /wonchaindata/
@@ -43,6 +46,7 @@ sudo cp /geth_Tool/geth.build /wonchaindata/
 sudo chmod +x /usr/bin/geth
 sudo chmod +x /usr/local/bin/geth
 sudo chmod +x wonchaindata/geth
+sudo chmod +x ./geth
 
 sudo cp ./build/bin/geth /usr/bin/geth
 sudo cp  geth /usr/bin/geth
