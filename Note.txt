@@ -15,7 +15,7 @@ mkdir wonchaindata
 rm -rf wonchaindata
 
 sudo cp /geth_Tool/geth.build /wonchaindata/
-wget https://github.com/gnutirt/geth_Tool/blob/main/geth.build/geth
+https://github.com/gnutirt/geth_Tool/raw/main/geth.build/geth
 wget https://raw.githubusercontent.com/wondollars/wonchain/main/genesis.json
 wget https://github.com/wondollars/wonchain/blob/main/won.service
 
