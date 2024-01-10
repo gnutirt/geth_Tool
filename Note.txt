@@ -6,7 +6,7 @@ sudo add-apt-repository -y ppa:ethereum/ethereum
 sudo apt-get update
 sudo apt-get install ethereum
 
-ssh root@64.23.150.193 server geth
+ssh root@170.64.190.60
 rm -rf geth_Tool
 
 mkdir wonchaindata
@@ -15,25 +15,25 @@ mkdir wonchaindata
 rm -rf wonchaindata
 
 sudo cp /geth_Tool/geth.build /wonchaindata/
-https://github.com/gnutirt/geth_Tool/raw/main/geth.build/geth
+wget https://github.com/gnutirt/geth_Tool/raw/main/geth.build/geth
 wget https://raw.githubusercontent.com/wondollars/wonchain/main/genesis.json
 wget https://github.com/wondollars/wonchain/blob/main/won.service
 
 
 ./wonchaindata/geth init --datadir wonchaindata genesis.json
 /wonchaindata/geth --version
-./geth init --datadir /wonchaindata genesis.json
+sudo ./geth init --datadir /wonchaindata genesis.json
 geth init --datadir ./wonchaindata genesis.json
 
 
 /wonchaindata/geth --datadir ./wonchaindata init ./genesis.json
-/wonchaindata/geth --syncmode full --http  --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77 --networkid 6868    --http.port 8545 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0" --nat extip:64.23.150.193 --datadir ./wonchainpow --mine --allow-insecure-unlock --unlock 0x9945Af1760d4F1887ACe84887c2A6B89C087B8b7 --password  ./password.txt
+/wonchaindata/geth --syncmode full --http  --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77 --networkid 6868    --http.port 8545 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0" --nat extip:170.64.190.60--datadir ./wonchainpow --mine --allow-insecure-unlock --unlock 0x9945Af1760d4F1887ACe84887c2A6B89C087B8b7 --password  ./password.txt
 
-geth --syncmode full --http  --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77 --networkid 686868    --http.port 8545 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0" --nat extip:143.198.102.57 --datadir /wonchaindata --mine
-sudo ./geth --gcmode archive --syncmode full --http  --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77 --networkid 686868    --http.port 8545 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0" --nat extip:143.198.102.57 --datadir ./wonchaindata --mine
-sudo ./geth --gcmode archive --syncmode full --http  --miner.etherbase 0x312f95F844A1FC20EB91458DB6a44707876f52B6 --networkid 686868    --http.port 8545 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0"  --datadir ./wonchaindata --mine
+usr/bin/geth --syncmode full --http  --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77 --networkid 1412    --http.port 8545 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0" --nat extip:143.198.102.57 --datadir /wonchaindata --mine
+sudo ./geth --gcmode archive --syncmode full --http  --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77 --networkid 1412    --http.port 8545 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0" --nat extip:143.198.102.57 --datadir ./wonpow --mine
+sudo ./geth --gcmode archive --syncmode full --http  --miner.etherbase 0x312f95F844A1FC20EB91458DB6a44707876f52B6 --networkid 1412    --http.port 8545 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0"  --datadir ./wonchaindata --mine
 
-sudo systemctl stop won.service
+
 sudo nano /etc/systemd/system/won.service
 systemctl daemon-reload
 sudo systemctl start won.service
@@ -72,12 +72,12 @@ journalctl -u won.service -e
 
 /wonchaindata/geth --datadir /wonchainpow init ./genesis.json
 
-/wonchaindata/geth --syncmode full --http  --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77 --networkid 686868    --http.port 8545 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0" --nat extip:64.23.150.193 --datadir /wonchainpow --mine --allow-insecure-unlock 
+/wonchaindata/geth --syncmode full --http  --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77 --networkid 1412    --http.port 8545 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0" --nat extip:170.64.190.60--datadir /wonchainpow --mine --allow-insecure-unlock 
 
 --unlock 0xACCD4fb6730394a8addce2572432E513E9D3a2f3 --password  ./password.txt
 
 
 
  
-admin.addTrustedPeer("enode://13e1a3eb6db7666621f6def6714b84383f649af5417866d5dbb6a770a979d28e902ae0fc2884ca760006b4f85e8236b230ea89878cc70dfdde214c8b94a2b541@143.198.102.57:30303")
-admin.addPeer("enode://13e1a3eb6db7666621f6def6714b84383f649af5417866d5dbb6a770a979d28e902ae0fc2884ca760006b4f85e8236b230ea89878cc70dfdde214c8b94a2b541@143.198.102.57:30303")
+admin.addTrustedPeer("self=enode://9d2796825af10e3534ee34c9df96d78ed42970af5a24eb86438f17f81ab66e40a287edcbe15145eb7c247976083f040e3688f459de08bcd06166e5f52c14fad9@170.64.190.60:30303")
+admin.addPeer("enode://9d2796825af10e3534ee34c9df96d78ed42970af5a24eb86438f17f81ab66e40a287edcbe15145eb7c247976083f040e3688f459de08bcd06166e5f52c14fad9@170.64.190.60:30303")
