@@ -22,6 +22,7 @@ wget https://github.com/wondollars/wonchain/blob/main/won.service
 
 ./wonchaindata/geth init --datadir wonchaindata genesis.json
 /wonchaindata/geth --version
+./geth init --datadir /wonchaindata genesis.json
 
 /wonchaindata/geth --datadir ./wonchaindata init ./genesis.json
 /wonchaindata/geth --syncmode full --http  --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77 --networkid 6868    --http.port 8545 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0" --nat extip:64.23.150.193 --datadir ./wonchainpow --mine --allow-insecure-unlock --unlock 0xACCD4fb6730394a8addce2572432E513E9D3a2f3 --password  ./password.txt
