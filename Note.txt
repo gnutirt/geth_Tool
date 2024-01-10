@@ -44,6 +44,10 @@ sudo chmod +x wonchaindata/geth
 
 sudo cp ./build/bin/geth /usr/bin/geth
 sudo cp  geth /usr/bin/geth
+
+
+Public address of the key:   0xACCD4fb6730394a8addce2572432E513E9D3a2f3
+Path of the secret key file: /root/.ethereum/keystore/UTC--2024-01-10T04-25-52.006879736Z--accd4fb6730394a8addce2572432e513e9d3a2f3
 sudo cp  geth /usr/local/bin/geth
 
 journalctl -u won.service -e
