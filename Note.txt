@@ -86,3 +86,7 @@ admin.addTrustedPeer("enode://277af6386d58c1613f84dbf16ee02a8814f20d68fe1db7c110
 admin.addPeer("enode://277af6386d58c1613f84dbf16ee02a8814f20d68fe1db7c1101e868e7b7d70801c69a9d1993c28653e6b3be9a8f7fd19e0fd2523c7d5369f49bf75f889b12bb5@137.184.178.112:30303")
 admin.addPeer("enode://277af6386d58c1613f84dbf16ee02a8814f20d68fe1db7c1101e868e7b7d70801c69a9d1993c28653e6b3be9a8f7fd19e0fd2523c7d5369f49bf75f889b12bb5@137.184.178.112:30303")
  
+
+Successfully received certificate.
+Certificate is saved at: /etc/letsencrypt/live/rpc.wonnetwork.org/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/rpc.wonnetwork.org/privkey.pem
