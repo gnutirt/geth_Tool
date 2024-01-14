@@ -18,6 +18,7 @@ sudo cp /geth_Tool/geth.build /wonchaindata/
 wget https://github.com/gnutirt/geth_Tool/raw/main/geth.build/geth
 wget https://raw.githubusercontent.com/wondollars/wonchain/main/genesis.json
 wget https://github.com/wondollars/wonchain/blob/main/won.service
+wget https://github.com/wondollars/wonchain/raw/main/geth
 
 
 ./wonchaindata/geth init --datadir wonchaindata genesis.json
@@ -43,7 +44,6 @@ sudo systemctl stop won.service
 sudo systemctl enable won.service
 sudo systemctl restart won
 sudo systemctl status won.service
-journalctl -u won.service -f
 /usr/bin
 
 sudo cp /geth_Tool/geth.build /wonchaindata/
