@@ -1,0 +1,66 @@
+# Xóa bộ nhớ cache DNS
+sudo systemd-resolve --flush-caches
+systemd-resolve --flush-caches
+
+# Khởi động lại dịch vụ networking (kiểm tra xem có cần thiết không)
+sudo service networking restart
+
+# Kiểm tra thông tin DNS của tên miền
+dig rpc.wonnetwork.org
+nslookup rpc.wonnetwork.org
+
+# Mở cổng 6868 trong firewall và làm mới cấu hình
+sudo firewall-cmd --zone=public --add-port=6868/tcp --permanent
+sudo firewall-cmd --reload
+
+# Cài đặt Certbot để tạo chứng chỉ Let's Encrypt
+sudo apt-get install certbot
+
+# Tạo thư mục cấu hình cho Nginx
+sudo mkdir /etc/nginx/conf.d
+sudo mkdir -p /etc/nginx/sites-available
+
+# Chỉnh sửa cấu hình mặc định của Nginx
+sudo nano /etc/nginx/sites-available/default
+
+# Chỉnh sửa cấu hình cho tên miền rpc.wonnetwork.org
+sudo nano /etc/nginx/sites-available/rpc.wonnetwork.org
+# Trong file này, thêm cấu hình server block cho HTTP và HTTPS
+
+        server {
+            listen 80;
+            server_name rpc.wonnetwork.org;
+
+            location / {
+                return 301 https://$host$request_uri;
+            }
+        }
+
+        server {
+            listen 443 ssl;
+            server_name rpc.wonnetwork.org;
+
+            ssl_certificate /etc/letsencrypt/live/rpc.wonnetwork.org/fullchain.pem;
+            ssl_certificate_key /etc/letsencrypt/live/rpc.wonnetwork.org/privkey.pem;
+
+            location / {
+                proxy_pass http://137.184.178.112:6868;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+            }
+        }
+
+# Tạo chứng chỉ Let's Encrypt cho tên miền rpc.wonnetwork.org
+sudo certbot certonly --standalone -d rpc.wonnetwork.org
+
+# Tắt UFW (Uncomplicated Firewall) nếu không cần thiết
+sudo ufw disable
+
+# Kiểm tra cấu hình của Nginx để đảm bảo không có lỗi
+sudo nginx -t
+
+# Khởi động lại dịch vụ Nginx để áp dụng các thay đổi
+sudo systemctl restart nginx
+ 
