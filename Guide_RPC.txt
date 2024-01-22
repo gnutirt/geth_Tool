@@ -20,6 +20,8 @@ sudo apt-get install certbot
 sudo mkdir /etc/nginx/conf.d
 sudo mkdir -p /etc/nginx/sites-available
 
+
+
 # Chỉnh sửa cấu hình mặc định của Nginx
 sudo nano /etc/nginx/sites-available/default
 
@@ -51,6 +53,9 @@ sudo nano /etc/nginx/sites-available/rpc.wonnetwork.org
                 proxy_set_header X-Forwarded-Proto $scheme;
             }
         }
+        
+# Tạo liên kết từ tệp cấu hình cho tên miền rpc.wonnetwork.org
+sudo ln -s /etc/nginx/sites-available/rpc.wonnetwork.org /etc/nginx/sites-enabled/
 
 # Tạo chứng chỉ Let's Encrypt cho tên miền rpc.wonnetwork.org
 sudo certbot certonly --standalone -d rpc.wonnetwork.org

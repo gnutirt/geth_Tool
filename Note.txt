@@ -34,7 +34,7 @@ sudo geth init --datadir /wonchaindata2 genesis.json
 
 usr/bin/geth --syncmode full --http  --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77 --networkid 686868    --http.port 6868 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0" --nat extip:143.198.102.57 --datadir /wonchaindata --mine
 sudo ./geth --gcmode archive --syncmode full --http  --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77 --networkid 686868    --http.port 6868 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0" --nat extip:137.184.178.112 --datadir ./wonchaindata --mine
-sudo ./geth --gcmode archive --syncmode full --http  --miner.etherbase 0x312f95F844A1FC20EB91458DB6a44707876f52B6 --networkid 686868    --http.port 6868 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0"  --datadir ./wonchaindata2 --mine
+sudo ./geth --gcmode archive --syncmode full --http  --miner.etherbase 0x312f95F844A1FC20EB91458DB6a44707876f52B6 --networkid 686868    --http.port 6868 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0"  --datadir ./wonchaindata --mine
 sudo geth --gcmode archive --syncmode full --http   --networkid 686868    --http.port 6868 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0"  --datadir /wonchaindata --mine
 
 sudo nano /etc/systemd/system/won.service
