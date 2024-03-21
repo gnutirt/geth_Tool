@@ -6,7 +6,8 @@ sudo add-apt-repository -y ppa:ethereum/ethereum
 sudo apt-get update
 sudo apt-get install ethereum
 
-    ssh root@137.184.178.112
+ssh root@137.184.178.112 => rpc
+ssh root@137.184.35.139
 rm -rf geth_Tool
 
 mkdir wonchaindata
