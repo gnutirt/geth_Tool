@@ -1,0 +1,12 @@
+#pyApp 
+    python3 Won_faucet.py
+    noip-duc -g all.ddnskey.com --username wrr1584 --password EmF82HgLdFkL
+    python3 Won_Unlock.py
+    python3 Admin_Bot.py
+    python3 Won_faucet.py (#disable)
+#PyCoreChain
+    python3 pyCoreChain/CoreSer.py
+    sudo geth attach --datadir /wonchaindata
+    sudo geth --gcmode archive --syncmode full --http  --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77 --networkid 686868    --http.port 6868 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0"  --datadir /wonchaindata --mine
+    sudo geth --gcmode archive --syncmode full --http --ws --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77 --networkid 686868 --http.port 6868 --http.corsdomain "*" --http.vhosts "*" --http.addr "0.0.0.0" --ws.port 8546 --ws.addr "0.0.0.0" --datadir /wonchaindata --mine
+
