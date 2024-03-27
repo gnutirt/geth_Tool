@@ -8,5 +8,7 @@
     python3 pyCoreChain/CoreSer.py
     sudo geth attach --datadir /wonchaindata
     sudo geth --gcmode archive --syncmode full --http  --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77 --networkid 686868    --http.port 6868 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0"  --datadir /wonchaindata --mine
-    sudo geth --gcmode archive --syncmode full --http --ws --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77 --networkid 686868 --http.port 6868 --http.corsdomain "*" --http.vhosts "*" --http.addr "0.0.0.0" --ws.port 8546 --ws.addr "0.0.0.0" --datadir /wonchaindata --mine
+    sudo geth --gcmode archive --syncmode full --http --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77 --networkid 686868 --http.port 6868 --http.corsdomain "*" --http.vhosts "*" --http.addr "0.0.0.0" --ws.port 8546 --ws.addr "0.0.0.0" --datadir /wonchaindata --mine
+    ///
 
+    sudo geth --gcmode archive --syncmode full --http --networkid 686868 --http.api "db,eth,net,web3,personal,debug" --http.port 6868 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0" --nat extip:118.68.53.36 --datadir /wonchaindata --mine --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77 --ws --ws.port 6969 --ws.addr "0.0.0.0" --graphql --graphql.corsdomain "*" --graphql.vhosts "*"

@@ -22,7 +22,8 @@
         WorkingDirectory=/root/wonchaindata
         User=root
 
-        ExecStart=/usr/bin/geth --gcmode archive --syncmode full --http --networkid 686868 --http.api "db,eth,net,web3,personal,debug" --http.port 6868 --http.corsdomain "*" --http.vhosts "*"  --http.addr "0.0.0.0" --nat extip:137.184.178.112 --datadir /root/wonchaindata --mine --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77
+        ExecStart=/usr/bin/geth --gcmode archive --syncmode full --http --networkid 686868 --http.api "db,eth,net,web3,personal,debug" --http.port 6868 --http.corsdomain "*" --http.vhosts "*"   --http.addr "0.0.0.0" --nat extip:137.184.178.112 --datadir /root/wonchaindata --mine --miner.etherbase 0x4bDEa95eb7c4E57D60eeBBD8Cec5e907991bEE77 --ws --ws.port 6969 --ws.addr "0.0.0.0" --ws.origins "*" --ws.api "db,eth,net,web3,personal,debug" --graphql --graphql.corsdomain "*" --graphql.vhosts "*"
+
 
         Restart=always
         RestartSec=5s
@@ -32,7 +33,7 @@
     ########################################################################
     sudo systemctl daemon-reload
     sudo systemctl enable won.service
-    sudo systemctl start won.service
+    sudo systemctl stop won.service
 #Cấu hình và Khởi động Nginx (SSL Proxy):
     sudo apt install nginx
     sudo certbot certonly --standalone -d rpc.wonnetwork.org
@@ -64,6 +65,18 @@
                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
                 proxy_set_header X-Forwarded-Proto $scheme;
             }
+            location /ws {
+                proxy_pass http://137.184.178.112:6969; # Thay đổi port tùy theo cấu hình của Geth
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection "upgrade";
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Forwarded-Proto $scheme;
+            }
+         
+                
         }
     ########################################################################
     sudo ln -s /etc/nginx/sites-available/rpc.wonnetwork.org /etc/nginx/sites-enabled/
