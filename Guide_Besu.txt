@@ -1,0 +1,16 @@
+Down Besu
+     wget https://github.com/hyperledger/besu/releases/download/24.3.0/besu-24.3.0.tar.gz
+     tar -xvf besu-24.3.0.tar.gz^C
+cd besu-24.3.0
+mkdir wonchaindata
+wget https://raw.githubusercontent.com/wondollars/Wonnetwork/main/EVM_WonChain_Config/genesis.json
+
+sudo apt install openjdk-17-jre
+
+
+
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+
+source ~/.bashrc
+
+
